@@ -11,8 +11,11 @@ class Asciicam < Formula
 
   def install
     venv = virtualenv_create(libexec, "python3.11")
-    venv.pip_install buildpath
-    venv.pip_install "opencv-python", "numpy", "Pillow"
+    # Install dependencies first
+    venv.pip_install "opencv-python"
+    venv.pip_install "numpy"
+    venv.pip_install "Pillow"
+    # Then install the package and create symlinks
     venv.pip_install_and_link buildpath
   end
 
