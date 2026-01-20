@@ -12,7 +12,6 @@ class Asciicam < Formula
   def install
     venv = virtualenv_create(libexec, "python3.11")
     venv.pip_install buildpath
-    # virtualenv_install_with_resources uses --no-deps, so install dependencies explicitly
     venv.pip_install "opencv-python", "numpy", "Pillow"
     venv.pip_install_and_link buildpath
   end
